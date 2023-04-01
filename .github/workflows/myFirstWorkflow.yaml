@@ -28,7 +28,7 @@ jobs:
       - name: Step Two
         # Pipe "|" indicates that we are going to run multiple commands
         run: |
-          touch myfile.txt
+          touch ${{ secrets.MY_SECRET }}.txt
           echo "Hello World!" >> myfile.txt
           cat myfile.txt
           pwd
