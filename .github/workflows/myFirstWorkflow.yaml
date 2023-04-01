@@ -13,6 +13,7 @@ on:
   
 # This is here we put our jobs than going to be executed when the trigger happens
 jobs:
+    # Jobs run in parallel
     myfirstjob: #This is the name of the job (For the github actions)
       name: First Job # The name of the job (For us as Users)
       # The platform where the job is going to be running
@@ -31,3 +32,22 @@ jobs:
           echo "Hello World!" >> myfile.txt
           cat myfile.txt
           pwd
+          
+    secondjob:
+      # Needs makes the jobs run linearly, meaning that a job neds to finish first to run this job
+      needs: [myfirstjob]
+      name: Second Job
+      runs-on: macos-latest
+      
+      steps:
+      - name: Step One
+        run: date
+        
+        
+    thirdjob:
+      name: Third Job
+      runs-on: windows-latest
+      
+      steps:
+      - name: Step One
+        run: date
