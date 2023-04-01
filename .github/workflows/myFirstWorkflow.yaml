@@ -1,0 +1,33 @@
+# Name is the first step when defining a workflow
+name: My Cool Workflow
+
+# Here is where we put our triggers
+on: 
+  # On the triggers we can put on wich branch the jobs should run, with: [ branch_name ]
+  # Execute on push
+  push:
+  # Execute on pull request
+  pull_request:
+  # Executes manually
+  workflow_dispatch:
+  
+# This is here we put our jobs than going to be executed when the trigger happens
+jobs:
+    myfirstjob: #This is the name of the job (For the github actions)
+      name: First Job # The name of the job (For us as Users)
+      # The platform where the job is going to be running
+      runs-on: ubuntu-latest
+      
+      # Steps that're going to take place in the job
+      steps:
+      - name: Step One
+        # Uses idicates with wich version of GitHub actions we are going to be working
+        uses: actions/checkout@v3
+        
+      - name: Step Two
+        # Pipe "|" indicates that we are going to run multiple commands
+        run: |
+          touch myfile.txt
+          echo "Hello World!" >> myfile.txt
+          cat myfile.txt
+          pwd
