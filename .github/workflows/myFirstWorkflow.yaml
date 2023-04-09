@@ -34,7 +34,7 @@ jobs:
           pwd
           
     secondjob:
-      # Needs makes the jobs run linearly, meaning that a job neds to finish first to run this job
+      # Needs makes the jobs run linearly, meaning that a job needs to finish (Successfully) first to run this job
       needs: [myfirstjob]
       name: Second Job
       runs-on: macos-latest
